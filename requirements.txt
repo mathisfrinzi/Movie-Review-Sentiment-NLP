@@ -1,0 +1,6 @@
+nltk
+random
+spacy
+numpy
+sklearn
+tkinter
