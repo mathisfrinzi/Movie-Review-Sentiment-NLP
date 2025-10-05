@@ -9,16 +9,6 @@ nltk.download('movie_reviews')
 
 name = 'en_core_web_sm'
 
-#import spacy
-#try:
- #   nlp_en = spacy.load(name, disable=['ner', 'parser'])
-#except:
-    #import subprocess
-    #import sys
-    #!python -m spacy download "en_core_web_sm"
-    #subprocess.check_call([sys.executable, '-m', 'spacy', 'download', name])
-    #nlp_en = spacy.load(name, disable=['ner', 'parser'])
-
 documents = [(movie_reviews.raw(fileid), category)
               for category in movie_reviews.categories()
               for fileid in movie_reviews.fileids(category)]
@@ -86,7 +76,7 @@ text_init = np.array(corpus_raw.copy())[indices][0]
 from tkinter import *
 class Interface(Tk):
     def __init__(self, text_init = ''):
-        global max_score, bestC, X_train, y_train
+        global max_score, bestC, X_train_val, y_train_val
         Tk.__init__(self)
         self.title('Accuracy : {0}%. Write in english your comment : '.format(max_score*100))
         Label(self, text = "Write your comment about a film you appreciate")
@@ -126,4 +116,5 @@ class Interface(Tk):
 
 
 Interface(text_init)
+
 
