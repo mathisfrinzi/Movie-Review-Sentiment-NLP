@@ -1,7 +1,6 @@
 import nltk
 from nltk.corpus import movie_reviews
 import random
-import spacy
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
@@ -10,14 +9,15 @@ nltk.download('movie_reviews')
 
 name = 'en_core_web_sm'
 
-try:
-    nlp_en = spacy.load(name, disable=['ner', 'parser'])
-except:
-    import subprocess
-    import sys
+#import spacy
+#try:
+ #   nlp_en = spacy.load(name, disable=['ner', 'parser'])
+#except:
+    #import subprocess
+    #import sys
     #!python -m spacy download "en_core_web_sm"
-    subprocess.check_call([sys.executable, '-m', 'spacy', 'download', name])
-    nlp_en = spacy.load(name, disable=['ner', 'parser'])
+    #subprocess.check_call([sys.executable, '-m', 'spacy', 'download', name])
+    #nlp_en = spacy.load(name, disable=['ner', 'parser'])
 
 documents = [(movie_reviews.raw(fileid), category)
               for category in movie_reviews.categories()
@@ -123,5 +123,6 @@ class Interface(Tk):
         except Exception as e:
             self.lab['text'] = 'ERROR : {0}'.format(e)
         self.after(10,self._after)
+
 
 Interface(text_init)
