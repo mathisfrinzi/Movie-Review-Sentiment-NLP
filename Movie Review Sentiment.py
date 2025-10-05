@@ -91,7 +91,7 @@ class Interface(Tk):
         self.title('Accuracy : {0}%. Write in english your comment : '.format(max_score*100))
         Label(self, text = "Write your comment about a film you appreciate")
         self.modele = LogisticRegression(C=bestC)
-        self.modele.fit(X_train,y_train)
+        self.modele.fit(X_train_val,y_train_val)
         text = Text(self,
             height=10,
             width=50,
@@ -126,3 +126,4 @@ class Interface(Tk):
 
 
 Interface(text_init)
+
